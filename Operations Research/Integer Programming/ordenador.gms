@@ -1,9 +1,11 @@
 * La empresa PECE vende ordenadores y debe hacer
-* una planificaciÛn de la producciÛn de la prÛxima semana.
+* una planificaci√≥n de la producci√≥n de la pr√≥xima semana.
 
-* La compaÒia produce tres tipos de ordenadores:
-* de mesa (A), port·til normal (B) y port·til de lujo (C).
-Set i tipos de ordenadores /A, B, C/;
+* La compa√±√≠a produce tres tipos de ordenadores:
+* de mesa (A), port√°til normal (B) y port√°til de lujo (C).
+Sets
+         i tipos de ordenadores /A, B, C/
+;
 
 * El beneficio neto por la venta de un ordenador
 * es 350, 470 y 610 euros, respectivamente.
@@ -19,7 +21,8 @@ Parameters
 * Los ordenadores pasan un control de calidad de una hora
 * y la empresa dispone de 120 horas para realizar
 * los controles de los ordenadores A y B y 48 para los C.
-Set j operaciones /CC1, CC2, MNT/
+Sets
+         j operaciones /CC1, CC2, MNT/
 ;
 
 Parameters
@@ -40,44 +43,44 @@ Table mtecn(i,j) matriz tecnologica
          C        0       1       20
 ;
 
-* Tras observar el plan Ûptimo de producciÛn,
-* seg˙n el cual la empresa tiene que producir 120 ordenadores de tipo A,
-* ning˙n ordenador de tipo B, y 40 ordenadores de tipo C,
+* Tras observar el plan √≥ptimo de producci√≥n,
+* seg√∫n el cual la empresa tiene que producir 120 ordenadores de tipo A,
+* ning√∫n ordenador de tipo B, y 40 ordenadores de tipo C,
 * los responsables de la empresa dudan que sea viable e inteligente.
-* Por un lado, ponen en duda que podrÌan vender los 120 ordenadores
+* Por un lado, ponen en duda que podr√≠an vender los 120 ordenadores
 * de tipo A a lo largo de la semana.
-* Por otro lado, les preocupa que no se produzca ning˙n ordenador de tipo B,
+* Por otro lado, les preocupa que no se produzca ning√∫n ordenador de tipo B,
 * porque, aunque el beneficio sea menor,
-* la compaÒia considera que no puede estar fuera de este mercado.
+* la compa√±√≠a considera que no puede estar fuera de este mercado.
 
-* Entonces, deciden elaborar una estrategia de producciÛn y ventas
+* Entonces, deciden elaborar una estrategia de producci√≥n y ventas
 * para cuatro semanas siguientes.
-* La idea detr·s de esta decisiÛn es que PECE
-* puede elegir vender menos de lo que el mercado absorber·
+* La idea detr√°s de esta decisi√≥n es que PECE
+* puede elegir vender menos de lo que el mercado absorber√≠a
 * de un determinado producto en una cierta semana
-* para utilizar sus instalaciones de producciÛn de manera
-* m·s rentable en la producciÛn de otros productos.
+* para utilizar sus instalaciones de producci√≥n de manera
+* m√°s rentable en la producci√≥n de otros productos.
 Sets
          k semanas incluido mes inicial /S0, S1, S2, S3, S4/
          m(k) semanas que transcurre /S1, S2, S3, S4/
 ;
 
-* En la Tabla est·n recogidas las previsiones
-* de ventas m·ximas (es decir,
-* lo m·ximo que absorber·° el mercado) para las prÛximas 4 semanas.
-Table demanda_prevista(i,m) Las previsiones de ventas m·ximas para las prÛximas 4 semanas
+* En la Tabla est√°n recogidas las previsiones
+* de ventas m√°ximas (es decir,
+* lo m√°ximo que absorber√° el mercado) para las pr√≥ximas 4 semanas.
+Table demanda_prevista(i,m) Las previsiones de ventas m√°ximas para las pr√≥ximas 4 semanas
                  S1      S2      S3      S4
          A       60      80      120     140
          B       40      40      40      40
          C       50      40      30      70
 ;
 
-* A su vez, se decide que vender·n,
-* como mÌnimo, 20 ordenadores de cada tipo semanalmente.
+* A su vez, se decide que vender√°n,
+* como m√≠nimo, 20 ordenadores de cada tipo semanalmente.
 Scalar venta_min /20/;
 
-* La empresa almacenar·° los ordenadores que produce
-* y no vende para poder venderlos despuÈs.
+* La empresa almacenar√° los ordenadores que produce
+* y no vende para poder venderlos despu√©s.
 * El almacenamiento tiene un coste de 9, 10 y 19 euros por semana
 * para los ordenadores de tipos A, B y C, respectivamente.
 Parameters
@@ -95,7 +98,7 @@ Parameters
                    C     36/
 ;
 
-* Para asegurar una transiciÛn m·s suave despuÈs de que hayan transcurrido las 4 semanas,
+* Para asegurar una transici√≥n m√°s suave despu√©s de que hayan transcurrido las 4 semanas,
 * se decide que el inventario final de cada producto en la semana 4 debe no ser inferior a 10.
 Scalar inventario_final /10/;
 
