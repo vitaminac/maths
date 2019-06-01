@@ -52,5 +52,5 @@ beneficio.. z =e= sum(i, precio_venta(i)*x(i));
 max_presupuesto.. presupuesto =g= sum(i, precio_materia_prima(i)*x(i));
 max_empleados.. empleados =g= sum(i, empleado(i)*x(i));
 
-Model asignacion /ALL/;
-Solve asignacion using LP maximizing z;
+Model cerveza /ALL/;
+Solve cerveza using LP maximizing z;

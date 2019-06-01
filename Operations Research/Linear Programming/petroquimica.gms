@@ -48,5 +48,5 @@ Equations
 beneficio.. z =e= sum(i, precio_venta(i)*x(i));
 max_recurso(j).. recurso(j) =g= sum(i, composition(i,j)*x(i));
 
-Model mix /ALL/;
-Solve mix using LP maximizing z;
+Model petroquimica /ALL/;
+Solve petroquimica using LP maximizing z;
