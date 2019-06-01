@@ -1,7 +1,7 @@
-* La f·brica de cerveza produce dos tipos
+* La f√°brica de cerveza produce dos tipos
 Set i /Rubia, Negra/;
 
-* La f·brica debe decidir cuantos litros de cerveza
+* La f√°brica debe decidir cuantos litros de cerveza
 * debe producir semanalmente teniendo en cuenta que 1000
 * litros de cerveza rubia se venden a 100 euros
 * y 1000 litros de cerveza negra a 125 euros
