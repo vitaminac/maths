@@ -1,11 +1,25 @@
-* Una empresa petroqu´ýmica produce gasolina, gasoil y queroseno
+* Una empresa petroquimica produce gasolina, gasoil y queroseno
 * para venderlo en cuatro mercados diferentes: Espana, Portugal, Francia y norte de Africa.
+Sets
+         p producto /Gasolina, Gas_oil, Queroseno/
+         m mercado   /Espana, Portugal, Francia, Africa/
+;
 
-* La materia prima, petr´oleo, se la compra cinco suministradores,
+* La materia prima, petroleo, se la compra cinco suministradores,
 * con un precio de 57, 59, 63, 60 y 61 euros por barril (un barril=159 litros),
 * mas unos costes de transporte a la refineria.
+Set s suministrador /A, B, C, D, E/;
+Parameter coste(s) coste de petroleo de cada suministrador
+                 / A             57
+                   B             59
+                   C             63
+                   D             60
+                   E             61/
+;
 
 * La empresa tiene tres refiner´ýas desde las que puede atender
+Set r refineria /R1, R2, R3/;
+
 * los cuatro mercados y en las que puede recibir petroleo de los cuatro suministradores
 
 * De un barril de petróleo crudo de cada suministrador es posible
@@ -17,11 +31,25 @@
 *        C               69              50              8
 *        D               79              40              10
 *        E               80              20              15
+Table
+         produccion(s, p) productos en litros obtenido por cada barril de petroleo de suministrador s
+                         Gasolina       Gas_oil       Queroseno
+         A               72             37            12
+         B               82             35            14
+         C               69             50            8
+         D               79             40            10
+         E               80             20            15
+;
 
 * Los contratos que ha firmado con cada suministrador,
-* obligan a la empresa a comprar un m´ýnimo de 100000 barriles
+* obligan a la empresa a comprar un minimo de 100000 barriles
 * y un maximo de 400.000 barriles diarios a cada uno de los suministradores
-* (que pueden ser destinados a todas las refiner´ýas).
+* (que pueden ser destinados a todas las refinerias).
+Scalar
+         min_compra limite inferior compra en barriles /100000/
+         max_compra limite superior compra en barriles /400000/
+         millon /1000000/
+;
 
 * Los costes de transporte del petroleo a cada refineria
 * que cada suministrador anade al precio del barril
@@ -33,6 +61,15 @@
 * Suministrador C        0.3             0.4             0.3
 * Suministrador D        0.3             0.5             0.5
 * Suministrador E        0.4             0.3             0.2
+Table
+         coste_transporte(s, r) costes de transporte a la refineria
+                         R1      R2      R3
+         A               0.4     0.3     0.3
+         B               0.4     0.4     0.4
+         C               0.3     0.4     0.3
+         D               0.3     0.5     0.5
+         E               0.4     0.3     0.2
+;
 
 * Las siguientes tablas muestran la demanda (en millones de litros)
 * de estos productos que podria atender la empresa
@@ -44,65 +81,6 @@
 * Gasolina       20              10              10              25
 * Gas-oil        15              6               8               10
 * Queroseno      10              3               4               12
-
-* Ingresos netos Espana          Portugal        Francia         Africa
-* Gasolina       0.7             0.65            0.80            0.75
-* Gas-oil        0.65            0.75            0.65            0.55
-* Queroseno      0.25            0.20            0.15            0.22
-
-* Cada refineria tiene un coste de manipulacion de su produccion (por litro de producto manipulado)
-* que se reflejan en la siguiente tabla:
-
-* Costes         refineria 1     refineria 2     refineria 3
-* Gasolina       0.023           0.021           0.031
-* Gas-oil        0.015           0.062           0.062
-* Queroseno      0.010           0.033           0.041
-
-* El beneficio obtenido se obtiene restando a los ingresos netos los costes de compra, de transporte del
-* petr´oleo hasta cada una de las refiner´ýas y de manipulaci´on en las refinerias.
-
-Sets
-         s suministrador /A, B, C, D, E/
-         p producto /Gasolina, Gas_oil, Queroseno/
-         m mercado   /Espana, Portugal, Francia, Africa/
-         r refineria /R1, R2, R3/
-;
-
-Scalar
-         min_compra limite inferior compra en barriles /100000/
-         max_compra limite superior compra en barriles /400000/
-         millon /1000000/
-;
-
-Parameters
-         coste(s) coste de petroleo de cada suministrador
-                 / A             57
-                   B             59
-                   C             63
-                   D             60
-                   E             61/
-;
-
-Table
-         produccion(s, p) productos en litros obtenido por cada barril de petroleo de suministrador s
-                         Gasolina       Gas_oil       Queroseno
-         A               72             37            12
-         B               82             35            14
-         C               69             50            8
-         D               79             40            10
-         E               80             20            15
-;
-
-Table
-         coste_transporte(s, r) costes de transporte a la refineria
-                         R1      R2      R3
-         A               0.4     0.3     0.3
-         B               0.4     0.4     0.4
-         C               0.3     0.4     0.3
-         D               0.3     0.5     0.5
-         E               0.4     0.3     0.2
-;
-
 Table
          demanda(p, m) demanda en millones de litros
                          Espana        Portugal        Francia        Africa
@@ -111,6 +89,10 @@ Table
          Queroseno       10            3               4              12
 ;
 
+* Ingresos netos Espana          Portugal        Francia         Africa
+* Gasolina       0.7             0.65            0.80            0.75
+* Gas-oil        0.65            0.75            0.65            0.55
+* Queroseno      0.25            0.20            0.15            0.22
 Table
          ingreso(p, m) ingreso neto obtenido por cada litro de producto vendido
                          Espana        Portugal        Francia        Africa
@@ -119,6 +101,13 @@ Table
          Queroseno       0.25          0.2             0.15           0.22
 ;
 
+* Cada refineria tiene un coste de manipulacion de su produccion (por litro de producto manipulado)
+* que se reflejan en la siguiente tabla:
+
+* Costes         refineria 1     refineria 2     refineria 3
+* Gasolina       0.023           0.021           0.031
+* Gas-oil        0.015           0.062           0.062
+* Queroseno      0.010           0.033           0.041
 Table
          coste_manipulacion(p, r) coste de manipulacion de su produccion
                          R1              R2              R3
@@ -127,13 +116,11 @@ Table
          Queroseno       0.010           0.033           0.041
 ;
 
+* El beneficio obtenido se obtiene restando a los ingresos netos los costes de compra, de transporte del
+* petroleo hasta cada una de las refinerias y de manipulacion en las refinerias.
 Free Variables
          z    beneficio obtenido
 ;
-
-*Binary Variables
-*          s_elegido(s) si selecciona suministrador s tiene valor 1 otro caso 0
-*;
 
 Positive Variables
          transportado(s, r) cantidad en barriles de crudo transportado desde suministrador s a refineria r
@@ -150,10 +137,8 @@ Equations
 
 *        El benecio es la suma de todas los producots vendidos en cada mercado por su precio
          obj.. z =e= sum((p, m, r), ingreso(p, m)*venta(r, m, p))
-*                    menos el coste materia prima
-                     - sum((s, r), transportado(s, r) * coste(s))
-*                    menos los costes de transporte
-                     - sum((s, r), transportado(s, r) * coste_transporte(s, r))
+*                    menos el coste materia prima y el coste de transporte
+                     - sum((s, r), transportado(s, r) * (coste(s) + coste_transporte(s, r)))
 *                    menos el coste de manipulacion
                      - sum((p, r), sum(s, transportado(s, r)*produccion(s, p))*coste_manipulacion(p, r));
 *        limite inferior de la compra
@@ -169,10 +154,10 @@ Equations
 
 * coding area
 option optcr = 0.0001;
-Model  fase1 /All/;
+Model fase1 /All/;
 Solve fase1 using LP maximizing z;
 
-* Rediseño de la cadena de suministro
+* Rediseno de la cadena de suministro
 * compania ha decidido redisenar su cadena de suministro,
 * simplificando su red de suministro y cerrando parte de sus instalaciones.
 Scalar
@@ -267,7 +252,7 @@ Equations
          r_max_suministrador.. sum(s,d_suministrador(s))=l=num_max_suministraor;
 *        cada refineria debe comprar a un minimo de dos suministradores
          r_min_refineria_suministrador(r).. sum(s,d_refineria_suministrador(s,r))=g=num_min_suministrador_por_refineria*d_refineria(r);
-*        cada refineria debe comprar a un minimo de tres suministradores
+*        cada refineria debe comprar a un maximo de tres suministradores
          r_max_refineria_suministrador(r).. sum(s,d_refineria_suministrador(s,r))=l=num_max_suministrador_por_refineria*d_refineria(r);
 *        solo envia materiales a refineria r si ha realizado compra al suministrador s
          r_transporte_refineria_suministrador(s, r).. transportado(s,r)=l=d_refineria_suministrador(s,r)*max_compra;
