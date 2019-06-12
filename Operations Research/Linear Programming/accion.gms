@@ -59,5 +59,5 @@ Equations
 
 
 * coding area
-Model  ex1 /All/;
-Solve ex1 using LP maximizing z;
+Model accion /All/;
+Solve accion using LP maximizing z;
