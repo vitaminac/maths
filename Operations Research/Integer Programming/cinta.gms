@@ -8,9 +8,33 @@
 * f3        C1, C3, C4, C5,
 * f4        C1, C2, C5, C8, C9, C10,
 * f5        C1, C3, C4, C6, C10,
+Sets
+         i cinta /C1*C10/
+         j fichero /f1*f5/
+;
+
+Table
+         recubrimiento(i,j)
+                 f1      f2      f3      f4      f5
+         C1      1       1       1       1       1
+         C2      1                       1
+         C3      1               1               1
+         C4      1               1               1
+         C5      1       1       1       1
+         C6              1                       1
+         C7              1
+         C8                              1
+         C9      1                       1
+         C10                             1       1
+;
+display recubrimiento;
 
 * Los tamañosos de las cintas de backup C1,...,C10 son:
 * (16, 36, 24, 50, 52, 52, 42, 18, 50, 35).
+Parameters
+         tamano(i) /C1  16, C2  36, C3  24, C4  50, C5  52,
+                    C6  52, C7  42, C8  18, C9  50, C10 35/
+;
 
 * Para poder recuperar los archivos,
 * primero hay que hacer un volcado de las cintas al disco duro.
@@ -30,35 +54,6 @@
 * Para ello, para fijarla, por ejemplo,
 * en el 0.1% deberá añadirse antes de la sentencia solve...
 * la sentencia option optcr = 0.001
-
-
-Sets
-         i cinta /C1*C10/
-         j fichero /f1*f5/
-;
-
-Parameters
-         tamano(i) /C1  16, C2  36, C3  24, C4  50, C5  52,
-                    C6  52, C7  42, C8  18, C9  50, C10 35/
-;
-
-Table
-         recubrimiento(i,j)
-                 f1      f2      f3      f4      f5
-         C1      1       1       1       1       1
-         C2      1                       1
-         C3      1               1               1
-         C4      1               1               1
-         C5      1       1       1       1
-         C6              1                       1
-         C7              1
-         C8                              1
-         C9      1                       1
-         C10                             1       1
-;
-
-display recubrimiento;
-
 Free Variables
          z    espacio final
 ;
@@ -77,5 +72,5 @@ Equations
 
 * coding area
 option optcr = 0.001
-Model  ex1 /All/;
-Solve ex1 using MIP minimizing z;
+Model cinta /All/;
+Solve cinta using MIP minimizing z;
