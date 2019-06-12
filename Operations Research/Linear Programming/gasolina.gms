@@ -66,11 +66,13 @@ Equations
          r_mezcla la mezcla de todo debe sumar uno
          r_porcentaje_minimo_crudo(j) la porcentaje minimo de cada crudo
 ;
+
+* coding area
          obj.. z =e= sum(i, p(i) * precio(i));
          r_mezcla.. sum(i, p(i)) =e= 1;
          r_porcentaje_minimo_crudo(j).. sum(i, p(i) * porcentaje(i, j)) =g= porcentaje_minimo_crudo(j);
          p.up(i) = porcentaje_maximo_gasolina(i);
 
-* coding area
-Model  ex1 /All/;
-Solve ex1 using LP minimizing z;
+
+Model gasolina /All/;
+Solve gasolina using LP minimizing z;
