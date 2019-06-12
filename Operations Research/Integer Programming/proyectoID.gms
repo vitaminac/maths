@@ -16,22 +16,6 @@
 * Presupuesto año 2      140   110   170   100   120   200   160   180
 * Región                 1     2     3     3     2     1     2     1
 
-* Construir un modelo de optimización lineal que maximice
-* la suma de la puntuación total obtenida por los proyectos seleccionados,
-* teniendo en cuenta que no se pueden seleccionar más de 6 proyectos,
-* debe haber al menos uno por región y área de investigación,
-* y el presupuesto máximo financiable es de 590000 euros cada año
-* y 1446000 en total, además de las condiciones que se indican a continuación.
-* Para ello, utilice las variables binarias X_j que toma el valor 1
-* si el proyecto j es seleccionado y 0 en otro caso.
-
-* Si NO se seleccionan el proyecto 8, deben seleccionarse los proyectos 1 y 2:
-
-* Los proyectos de la región 1 son incompatibles entre sí:
-
-* No se pueden financiar proyectos con un presupuesto total superior a 330 euros:
-
-
 Sets
          a area de investigacion /inf, mat, fis/
          j proyecto de I+D /1*8/
@@ -44,26 +28,19 @@ Sets
                                 7.fis, 8.fis/
 ;
 
-Scalars
-         max_proyecto /6/
-         presupuesto_anio  /590000/
-         presupuesto_total /1446000/
-;
-
 Parameters
          valoracion(j)    /1 65,  2 80,  3 75,  4 100,
                            5 95,  6 70,  7 90,  8 60/
          region(j,r)
          area(j,a)
 ;
-
 region(j,r)=pr(j,r);
 area(j,a)=pa(j,a);
 display region;
 display area;
 
 Table
-         presupuesto(j,t) porcentaje de crudo j que tiene la gasolina i
+         presupuesto(j,t)
                          1       2
          1               190     140
          2               170     110
@@ -75,13 +52,35 @@ Table
          8               150     180
 ;
 
-Free Variables
-         z    coste total
+* Construir un modelo de optimización lineal que maximice
+* la suma de la puntuación total obtenida por los proyectos seleccionados,
+* teniendo en cuenta que no se pueden seleccionar más de 6 proyectos,
+* debe haber al menos uno por región y área de investigación,
+* y el presupuesto máximo financiable es de 590000 euros cada año
+* y 1446000 en total, además de las condiciones que se indican a continuación.
+Scalars
+         max_proyecto /6/
+         presupuesto_anio  /590000/
+         presupuesto_total /1446000/
 ;
 
-Binary Variables
-         x(j)  toma el valor 1 si el proyecto j es seleccionado y 0 en otro caso.
-;
+* Para ello, utilice las variables binarias X_j que toma el valor 1
+* si el proyecto j es seleccionado y 0 en otro caso.
+Binary Variable x(j);
+
+* Si NO se seleccionan el proyecto 8, deben seleccionarse los proyectos 1 y 2:
+Equation r1;
+r1.. x('1')+x('2')+2*x('8')=g=2;
+
+* Los proyectos de la región 1 son incompatibles entre sí:
+Equation r2;
+r2.. sum(pr(j,'1'), x(j)) =l= 1;
+
+* No se pueden financiar proyectos con un presupuesto total superior a 330 euros:
+Equation r3(j);
+r3(j).. sum(t,x(j)*presupuesto(j,t))=l=330;
+
+Free Variable z valoracion total;
 
 Equations
          obj maximice la suma de la puntuacion total
@@ -90,23 +89,16 @@ Equations
          r_presupuesto_total presupuesto total
          r_region(r) al menos uno por region
          r_area(a) al menos uno por area
-         r1 Si NO se seleccionan el proyecto 8 deben seleccionarse los proyectos 1 y 2:
-         r2 Los proyectos de la región 1 son incompatibles entre sí:
-         r3(j) No se pueden financiar proyectos con un presupuesto total superior a 330 euros:
 ;
+
+* coding area
          obj.. z =e= sum(j,x(j)*valoracion(j));
          r_proyecto.. sum(j,x(j))=l=max_proyecto;
          r_region(r).. sum(j, region(j,r)*x(j))=g=1;
          r_area(a).. sum(j,area(j,a)*x(j))=g=1;
          r_presupuesto_anio(t).. sum(j,x(j)*presupuesto(j,t)*1000)=l=presupuesto_anio;
          r_presupuesto_total.. sum((j,t), x(j)*presupuesto(j,t)*1000)=l=presupuesto_total;
-         r1.. -1*x('1')-1*x('2')-2*x('8')=l=-2;
-         r2.. sum(pr(j,'1'), x(j)) =l= 1;
-         r3(j).. sum(t,x(j)*presupuesto(j,t))=l=330;
 
-
-
-* coding area
 option optcr = 0.001
-Model  ex1 /All/;
-Solve ex1 using MIP maximizing z;
+Model proyectoID /All/;
+Solve proyectoID using MIP maximizing z;
