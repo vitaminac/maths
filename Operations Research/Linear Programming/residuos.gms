@@ -56,5 +56,5 @@ Equations
          r_demanda(j).. sum(i, x(i) * reduccion(i, j))=g=demanda(j);
 
 * coding area
-Model  ex1 /All/;
-Solve ex1 using LP minimizing z;
+Model residuos /All/;
+Solve residuos using LP minimizing z;
