@@ -56,10 +56,37 @@ Equations
          r_max_dureza
 ;
 
-obj.. z =e= sum(i, beneficio*x(i)) - sum(i, coste(i)*x(i));
+obj.. z =e= sum(i, (beneficio-coste(i))*x(i));
 r_max_vegetal.. max_vegetal =g= x('VEG1') + x('VEG2');
 r_max_no_vegetal.. max_no_vegetal =g= x('OIL1') + x('OIL2') + x('OIL3');
-r_min_dureza.. min_dureza =l= sum(i,x(i)*dureza(i));
-r_max_dureza.. max_dureza =g= sum(i,x(i)*dureza(i));
+r_min_dureza.. min_dureza*sum(i,x(i)) =l= sum(i,x(i)*dureza(i));
+r_max_dureza.. max_dureza*sum(i,x(i)) =g= sum(i,x(i)*dureza(i));
 Model aceite /ALL/;
 Solve aceite using LP maximizing z;
+
+* Se imponen las siguientes condiciones adicionales al problema
+
+* El alimento final no puede contener mas de tres tipos de aceite diferentes
+Binary Variable d(i) si usa i aceite;
+Scalar M /9999999999/;
+Scalar max_aceite /3/;
+Equations
+         r_max_aceite
+         r_aceite_d(i) si no utiliza aceite i su cantidad se va 0
+;
+r_max_aceite.. sum(i,d(i)) =l= max_aceite;
+r_aceite_d(i).. x(i) =l= M*d(i);
+
+* Si el producto final contiene un cierto tipo de aceite,
+* debe contener al menos 20 toneladas del mismo
+Scalar min_cantidad /20/;
+Equation r_min_cantidad(i);
+r_min_cantidad(i).. x(i) =g= d(i) * min_cantidad;
+
+* Si la mezcla contiene algun tipo de aceite vegetal (VEG1 O VEG2),
+* entonces tambien debe contener aceite no vegetal de tipo 3 (OIL3)
+Equation r_equilibrio;
+r_equilibrio.. d('VEG1') + d('VEG2') =l= 2 * d('OIL3');
+
+Model aceite_modificado /ALL/;
+Solve aceite_modificado using MIP maximizing z;
