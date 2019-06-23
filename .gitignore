@@ -1329,5 +1329,40 @@ venv.bak/
 
 desktop.ini
 
-/Machine\ Learning/Deep\ Learning/DeepLearningAI/convolutional-neural-networks/week1/datasets/test_signs.h5
-/Machine\ Learning/Deep\ Learning/DeepLearningAI/convolutional-neural-networks/week2/ResNets/ResNet50.h5
+
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week1/datasets/test_signs.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week1/datasets/train_signs.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week1/images/conv_kiank.mp4
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week2/KerasTutorial/datasets/test_happy.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week2/KerasTutorial/datasets/train_happy.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week2/ResNets/ResNet50.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week2/ResNets/datasets/test_signs.h5
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 3/Machine Translation/models/model_kiank.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week2/ResNets/datasets/train_signs.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week3/Car detection for Autonomous Driving/model_data/yolo.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week3/Car detection for Autonomous Driving/nb_images/pred_video.mp4
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week3/Car detection for Autonomous Driving/nb_images/pred_video_compressed2.mp4
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week3/Car detection for Autonomous Driving/nb_images/prediction_video_compressed.mp4
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week3/Car detection for Autonomous Driving/nb_images/road_video.mp4
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week3/Car detection for Autonomous Driving/nb_images/road_video_compressed.mp4
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week3/Car detection for Autonomous Driving/nb_images/road_video_compressed2.mp4
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week4/Face Recognition/nn4.small2.v7.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week4/Face Recognition/datasets/test_happy.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week4/Face Recognition/datasets/train_face.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week4/Face Recognition/datasets/train_happy.h5
+MachineLearning/DeepLearning/DeepLearningAI/convolutional-neural-networks/week4/Neural Style Transfer/pretrained-model/imagenet-vgg-verydeep-19.mat
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 1/Dinosaur Island -- Character-level language model/models/model_shakespeare_kiank.h5
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 1/Dinosaur Island -- Character-level language model/models/model_shakespeare_kiank_350_epoch.h5
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 3/Machine Translation/models/model.h5
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 3/Machine Translation/models/model_sisi_oklm.h5
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 3/Machine Translation/models/oklmkiank.h5
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 3/Trigger word detection/XY_dev/X_dev.npy
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 3/Trigger word detection/XY_dev/Y_dev.npy
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 3/Trigger word detection/XY_train/X.npy
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 3/Trigger word detection/XY_train/Y.npy
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/Week 3/Trigger word detection/models/tr_model.h5
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/readonly/glove.6B.50d.txt
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/readonly/Triggerword Detection/XY_dev/X_dev.npy
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/readonly/Triggerword Detection/XY_dev/Y_dev.npy
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/readonly/Triggerword Detection/XY_train/X.npy
+MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/readonly/Triggerword Detection/XY_train/Y.npy
