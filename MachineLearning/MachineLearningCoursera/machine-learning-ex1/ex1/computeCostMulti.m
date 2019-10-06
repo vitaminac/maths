@@ -14,7 +14,9 @@ J = 0;
 %               You should set J to the cost.
 
 
+m = length(y); % number of training examples
 
+J = (1/(2*m)) * (X * theta - y)' * (X * theta - y); % Vectorized
 
 
 % =========================================================================
