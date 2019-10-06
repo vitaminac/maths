@@ -23,7 +23,18 @@ grad = zeros(size(theta));
 
 
 
+m = length(y); % number of training examples
 
+h_theta = X * theta;
+
+J = 1/(2*m) * (h_theta - y)' * (h_theta - y) + ...
+    (lambda/(2*m)) * (theta(2:length(theta)))' * theta(2:length(theta));
+
+thetaZero = theta;
+thetaZero(1) = 0;
+
+grad = ((1 / m) * (h_theta - y)' * X) + ...
+    lambda / m * thetaZero';
 
 
 
