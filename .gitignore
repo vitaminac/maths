@@ -1366,3 +1366,7 @@ MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/readonly/Trigger
 MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/readonly/Triggerword Detection/XY_dev/Y_dev.npy
 MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/readonly/Triggerword Detection/XY_train/X.npy
 MachineLearning/DeepLearning/DeepLearningAI/nlp-sequence-models/readonly/Triggerword Detection/XY_train/Y.npy
+
+MachineLearning/MathematicsForMachineLearning/PCA/mnist-original.mat
+MachineLearning/MathematicsForMachineLearning/PCA/MNIST/mldata/mnist-original.mat
+MachineLearning/MathematicsForMachineLearning/PCA/data/mldata/mnist-original.mat
